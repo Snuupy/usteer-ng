@@ -123,6 +123,11 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Fetch upstream release tags
+        run: |
+          git fetch --tags https://github.com/NilsRo/usteer-ng.git
+          git describe --tags --abbrev=0
+
       - name: Build
         uses: cmangla/gh-action-sdk@pr-hash-fixup-option
         env:
