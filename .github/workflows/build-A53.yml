@@ -31,10 +31,12 @@ jobs:
 
       - name: Check out matching OpenWrt source
         run: |
-          git clone --filter=blob:none --no-checkout \
-            https://github.com/openwrt/openwrt.git openwrt
-          git -C openwrt checkout --detach 83c6a8f3db
-
+          git init openwrt
+          git -C openwrt remote add origin https://github.com/openwrt/openwrt.git
+          git -C openwrt fetch --depth=1 origin \
+            83c6a8f3dbdc4ba0ca39c3b1ac6b9ad1689de703
+          git -C openwrt checkout --detach FETCH_HEAD
+          
       - name: Configure package build
         working-directory: openwrt
         run: |
