@@ -1,4 +1,4 @@
-name: Publish
+name: Publish A53
 
 on:
   workflow_dispatch:
