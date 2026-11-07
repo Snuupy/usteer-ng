@@ -53,7 +53,7 @@ jobs:
               release_version = f"{match.group(1)}.{match.group(2)}" if match.group(3) is None else f"{match.group(1)}.{match.group(2)}.{match.group(3)}"
               snapshot_version = f"{match.group(1)}.{match.group(2)}-SNAPSHOT"
 
-          versions = ["SNAPSHOT"]
+          versions = [release_version, snapshot_version]
           with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as handle:
               handle.write(f"versions={json.dumps(versions)}\n")
 
@@ -122,11 +122,6 @@ jobs:
       - uses: actions/checkout@v6
         with:
           fetch-depth: 0
-
-      - name: Fetch upstream release tags
-        run: |
-          git fetch --tags https://github.com/NilsRo/usteer-ng.git
-          git describe --tags --abbrev=0
 
       - name: Build
         uses: cmangla/gh-action-sdk@pr-hash-fixup-option
