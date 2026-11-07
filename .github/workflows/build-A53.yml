@@ -137,7 +137,7 @@ jobs:
           FIXUP: 1
           NO_DEFAULT_FEEDS: 1
           EXTRA_FEEDS: >-
-            src-git|base|https://github.com/openwrt/openwrt.git^83c6a8f3dbdc4ba0ca39c3b1ac6b9ad1689de703
+            src-git|base|https://github.com/openwrt/openwrt.git^606ee33b8a049244759de735a48e98b00ec8ad5c
 
       - name: List outputs
         run: |
